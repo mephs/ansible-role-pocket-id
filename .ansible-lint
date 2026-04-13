@@ -1,0 +1,12 @@
+profile: production
+
+skip_list:
+  - yaml
+
+enable_list:
+  - name[prefix]
+
+exclude_paths:
+  - .github
+  - .ansible
+  - requirements.yml

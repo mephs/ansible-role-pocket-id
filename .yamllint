@@ -1,0 +1,22 @@
+extends: default
+
+rules:
+  document-start:
+    present: false
+  line-length:
+    max: 160
+    level: warning
+  braces:
+    max-spaces-inside: 1
+    level: error
+  brackets:
+    max-spaces-inside: 1
+    level: error
+  truthy:
+    allowed-values: ["true", "false"]
+    check-keys: false
+
+ignore: |
+  .github
+  .ansible
+  requirements.yml
