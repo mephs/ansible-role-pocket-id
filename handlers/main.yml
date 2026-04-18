@@ -1,0 +1,7 @@
+- name: Restart compose
+  community.docker.docker_compose_v2:
+    state: restarted
+    project_src: "{{ pocket_id_compose_dir }}"
+  when:
+    - not ansible_check_mode | bool
+    - not __compose_run.changed

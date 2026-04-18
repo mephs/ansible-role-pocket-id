@@ -1,0 +1,31 @@
+galaxy_info:
+  role_name: pocket_id
+  author: mephs
+  description: Deploy Pocket ID OIDC provider via Docker Compose
+  license: MIT
+  min_ansible_version: "2.15"
+  issue_tracker_url: https://github.com/mephs/ansible-role-pocket-id/issues
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+    - name: Debian
+      versions:
+        - bullseye
+        - bookworm
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - noble
+  galaxy_tags:
+    - pocketid
+    - authentication
+    - identity
+    - oidc
+    - sso
+    - docker
+    - compose
+
+dependencies: []
