@@ -1,7 +1,7 @@
 - name: Validate encryption key
   ansible.builtin.assert:
     that: pocket_id_encryption_key | length >= 16
-    fail_msg: "pocket_id_encryption_key must be at least 16 bytes long"
+    fail_msg: "pocket_id_encryption_key must be at least 16 characters"
     quiet: true
 
 - name: Create compose directory
