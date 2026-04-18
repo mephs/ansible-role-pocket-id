@@ -70,7 +70,7 @@ argument_specs:
       pocket_id_trusted_platform:
         type: str
         default: ""
-        description: HTTP header name containing the real client IP, set by a trusted proxy or CDN (e.g. CF-Connecting-IP for Cloudflare, Fly-Client-IP for Fly.io).
+        description: HTTP header name containing the real client IP, set by a trusted proxy or CDN.
 
       pocket_id_maxmind_license_key:
         type: str
