@@ -1,0 +1,43 @@
+- name: Validate encryption key
+  ansible.builtin.assert:
+    that: pocket_id_encryption_key | length >= 16
+    fail_msg: "pocket_id_encryption_key must be at least 16 characters"
+    quiet: true
+
+- name: Create compose directory
+  ansible.builtin.file:
+    path: "{{ pocket_id_compose_dir }}"
+    owner: root
+    group: root
+    mode: "0750"
+    state: directory
+
+- name: Render compose configuration
+  ansible.builtin.template:
+    src: compose.yaml.j2
+    dest: "{{ pocket_id_compose_dir }}/compose.yaml"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Render dotenv file
+  ansible.builtin.template:
+    src: .env.j2
+    dest: "{{ pocket_id_compose_dir }}/.env"
+    owner: root
+    group: root
+    mode: "0600"
+  no_log: true
+  notify: Restart compose
+
+- name: Pull image
+  community.docker.docker_image_pull:
+    name: "{{ pocket_id_image_registry }}/{{ pocket_id_image_repository }}"
+    tag: "{{ pocket_id_image_tag }}"
+  when: pocket_id_pull_image | bool
+
+- name: Run compose
+  community.docker.docker_compose_v2:
+    project_src: "{{ pocket_id_compose_dir }}"
+  register: __compose_run
+  when: not ansible_check_mode | bool

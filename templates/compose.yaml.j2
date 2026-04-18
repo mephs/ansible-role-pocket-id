@@ -1,0 +1,40 @@
+{{ ansible_managed | comment }}
+
+services:
+  pocket-id:
+    image: {{ pocket_id_image_registry }}/{{ pocket_id_image_repository }}:{{ pocket_id_image_tag }}
+    container_name: {{ pocket_id_container_name }}
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+    env_file: .env
+    networks: ["{{ pocket_id_network }}"]
+{% if not pocket_id_network_external or pocket_id_metrics %}
+    ports:
+{% if not pocket_id_network_external %}
+      - "{{ pocket_id_port }}:1411"
+{% endif %}
+{% if pocket_id_metrics %}
+      - "{{ pocket_id_metrics_address }}:{{ pocket_id_metrics_port }}:9464"
+{% endif %}
+{% endif %}
+    volumes:
+      - data:/app/data
+    healthcheck:
+      test: [ "CMD", "/app/pocket-id", "healthcheck" ]
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+{% if pocket_id_labels %}
+    labels:
+{{ pocket_id_labels | to_nice_yaml(indent=2) | indent(6, True) }}
+{% endif %}
+
+volumes:
+  data:
+    name: {{ pocket_id_container_name }}-data
+
+networks:
+  {{ pocket_id_network }}:
+    external: {{ pocket_id_network_external | lower }}
+    name: {{ pocket_id_network }}

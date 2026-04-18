@@ -1,0 +1,121 @@
+argument_specs:
+  main:
+    short_description: Deploy Pocket ID OIDC provider via Docker Compose
+    options:
+      pocket_id_image_registry:
+        type: str
+        default: ghcr.io
+        description: Docker registry to pull the Pocket ID image from.
+
+      pocket_id_image_repository:
+        type: str
+        default: pocket-id/pocket-id
+        description: Pocket ID image repository.
+
+      pocket_id_image_tag:
+        type: str
+        default: v2.5.0
+        description: Pocket ID image tag.
+
+      pocket_id_pull_image:
+        type: bool
+        default: true
+        description: Whether to pull the image before starting the compose stack.
+
+      pocket_id_container_name:
+        type: str
+        default: pocket-id
+        description: Name of the Pocket ID container.
+
+      pocket_id_compose_dir:
+        type: path
+        default: /opt/pocket-id
+        description: Directory where compose and dotenv files are placed.
+
+      pocket_id_labels:
+        type: dict
+        default: {}
+        description: Additional Docker labels to apply to the Pocket ID container.
+
+      pocket_id_network:
+        type: str
+        default: pocket-id
+        description: Docker network name to attach Pocket ID to.
+
+      pocket_id_network_external:
+        type: bool
+        default: false
+        description: Whether the network is managed outside of this compose project.
+
+      pocket_id_port:
+        type: int
+        default: 1411
+        description: Host port to publish the application on.
+
+      pocket_id_url:
+        type: str
+        default: https://id.example.com
+        description: Public URL at which Pocket ID will be reachable (APP_URL).
+
+      pocket_id_encryption_key:
+        type: str
+        default: ""
+        description: Encryption key used by Pocket ID to encrypt sensitive data at rest.
+
+      pocket_id_trust_proxy:
+        type: bool
+        default: false
+        description: Whether to trust X-Forwarded-* headers from an upstream reverse proxy.
+
+      pocket_id_trusted_platform:
+        type: str
+        default: ""
+        description: HTTP header name containing the real client IP, set by a trusted proxy or CDN.
+
+      pocket_id_maxmind_license_key:
+        type: str
+        default: ""
+        description: MaxMind license key for GeoIP lookups.
+
+      pocket_id_geolite_db_url:
+        type: str
+        default: ""
+        description: Custom download URL for the GeoLite2 database. The default pocket-id URL is used when empty.
+
+      pocket_id_version_check:
+        type: bool
+        default: true
+        description: Whether Pocket ID should check for new versions.
+
+      pocket_id_log_level:
+        type: str
+        default: info
+        choices:
+          - debug
+          - info
+          - warn
+          - error
+        description: Pocket ID log level.
+
+      pocket_id_log_format:
+        type: str
+        default: common
+        choices:
+          - common
+          - json
+        description: Pocket ID log format.
+
+      pocket_id_metrics:
+        type: bool
+        default: false
+        description: Whether to enable the Prometheus metrics endpoint.
+
+      pocket_id_metrics_address:
+        type: str
+        default: "127.0.0.1"
+        description: Host bind address for the Prometheus metrics port.
+
+      pocket_id_metrics_port:
+        type: int
+        default: 9464
+        description: Host port for the Prometheus metrics endpoint.
