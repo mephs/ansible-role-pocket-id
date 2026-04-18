@@ -9,6 +9,7 @@ pocket_id_compose_dir: /opt/pocket-id
 
 pocket_id_network: pocket-id
 pocket_id_network_external: false
+pocket_id_address: 127.0.0.1
 pocket_id_port: 1411
 
 pocket_id_url: https://id.example.com

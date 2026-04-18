@@ -47,6 +47,11 @@ argument_specs:
         default: false
         description: Whether the network is managed outside of this compose project.
 
+      pocket_id_address:
+        type: str
+        default: 127.0.0.1
+        description: Host bind address for the application port.
+
       pocket_id_port:
         type: int
         default: 1411

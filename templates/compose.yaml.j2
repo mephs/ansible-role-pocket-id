@@ -11,7 +11,7 @@ services:
 {% if not pocket_id_network_external or pocket_id_metrics %}
     ports:
 {% if not pocket_id_network_external %}
-      - "{{ pocket_id_port }}:1411"
+      - "{{ pocket_id_address }}:{{ pocket_id_port }}:1411"
 {% endif %}
 {% if pocket_id_metrics %}
       - "{{ pocket_id_metrics_address }}:{{ pocket_id_metrics_port }}:9464"
