@@ -12,7 +12,6 @@ jobs:
       - name: ⤵️ Checkout
         uses: actions/checkout@v6
       - name: 🚀 Publish to Ansible Galaxy
-        uses: robertdebock/galaxy-action@1.2.1
+        uses: hspaans/ansible-galaxy-action@v2.1.0
         with:
-          galaxy_api_key: ${{ secrets.ANSIBLE_GALAXY_TOKEN }}
-          git_branch: main
+          api_key: ${{ secrets.ANSIBLE_GALAXY_TOKEN }}
