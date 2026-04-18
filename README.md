@@ -1,6 +1,6 @@
 # ansible-role-pocket-id
 
-[![Lint](https://github.com/mephs/ansible-role-pocket-id/actions/workflows/lint.yml/badge.svg)](https://github.com/mephs/ansible-role-pocket-id/actions/workflows/lint.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Ansible Galaxy](https://img.shields.io/ansible/role/d/mephs/pocket_id?label=galaxy)](https://galaxy.ansible.com/ui/standalone/roles/mephs/pocket_id/) [![GitHub release](https://img.shields.io/github/v/release/mephs/ansible-role-pocket-id)](https://github.com/mephs/ansible-role-pocket-id/releases)
+[![Lint](https://github.com/mephs/ansible-role-pocket-id/actions/workflows/lint.yml/badge.svg)](https://github.com/mephs/ansible-role-pocket-id/actions/workflows/lint.yml) [![License](https://img.shields.io/github/license/mephs/ansible-role-pocket-id?color=yellow)](LICENSE) [![Release](https://img.shields.io/github/v/release/mephs/ansible-role-pocket-id?logo=github)](https://github.com/mephs/ansible-role-pocket-id/releases) [![Galaxy](https://img.shields.io/ansible/role/d/mephs/pocket_id?label=downloads&logo=ansible)](https://galaxy.ansible.com/ui/standalone/roles/mephs/pocket_id/)
 
 Ansible role that deploys [Pocket ID](https://pocket-id.org/) OIDC provider via Docker Compose.
 
